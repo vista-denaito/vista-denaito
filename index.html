@@ -1,5 +1,49 @@
-<html>
- <body>
-    hello world
- </body>
-</html> 
+<!DOCTYPE html> <!--この文章はhtmlで書くよ-->
+<html><!--もう一回言うけどhtmlだから-->
+  
+  <head><!--今回は下の4つの工具箱を使ってwebページを作るよ-->
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>  
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"> </script>
+  <title>WebAR</title><!--ページの名前-->
+  </head> <!--工具箱紹介終わり--> 
+    
+  <body style="margin : 0px; overflow: hidden;"><!--ここからが記事の中身を決める-->
+    <a-scene embedded arjs="debugUIEnabled:false; sourceType: webcam;"
+     vr-mode-ui="enabled: false;"
+     ><!--webカメラを使うよ、どうでもいい表示は消すよっていう意味-->
+           
+     <!--マーカーの設定-->
+      <a-marker 
+        type="pattern"
+        preset="custom"
+        url="pattern-sankaku.patt"
+        raycaster="objects: .clickable"
+        mitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+        >
+        <!--文章を表示させたい時は下の行が必要-->
+          <a-text value="Welcome to project-vista!!" position=" 0 0 -6" scale="3 3 3" rotation="-90 0 0" color="#FAFBFC">
+          </a-text>
+
+          <!--画像を表示させたい時は下の行が必要-->
+         <a-image
+           src="siteicon.JPG"
+           position="0 -10 0"
+           rotation="-90 0 0"
+           scale="10 10 10"
+           class="clickable"  
+           animation="property: position.x;
+             from: 0.0;
+             to: 15.0;
+             dur: 15000;
+             delay: 1000;"
+             >  
+         </a-image>
+
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
